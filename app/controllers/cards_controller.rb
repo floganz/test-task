@@ -4,50 +4,51 @@ class CardsController < ApplicationController
     @card = Card.new card_params
     if @card.save
       render :status => 200,
-       :json => { :success => true,
+        :json => { :success => true,
                   :info => "created",
                   :campaign => @card
-       } 
+        } 
     else
       render :status => 501,
-       :json => { :success => false,
+        :json => { :success => false,
                   :info => "create fail",
-       }
+        }
     end  
   end
 
-  def update
+        def update
     @card = Card.update params[:id], card_params
     if @card.save
       render :status => 200,
-       :json => { :success => true,
+        :json => { :success => true,
                   :info => "edited",
                   :campaign => @card
-       } 
+        } 
     else
-      render :status => 501,
-       :json => { :success => false,
+        render :status => 501,
+        :json => { :success => false,
                   :info => "edit fail",
-       }
+        }
     end 
   end
 
   def destroy
     @card = Card.find params[:id]
     if @card.destroy
-      render :status => 200,
-       :json => { :success => true,
+        render :status => 200,
+        :json => { :success => true,
                   :info => "deleted",
-       } 
+        } 
     else
-      render :status => 501,
-       :json => { :success => false,
+        render :status => 501,
+        :json => { :success => false,
                   :info => "delete fail",
-       }
+        }
     end 
   end
 
-  def card_params
-    params.require(:card).permit(:name, :list_id)
-  end
+  private
+    def card_params
+      params.require(:card).permit(:name, :list_id)
+    end
 end

@@ -4,15 +4,15 @@ class ListsController < ApplicationController
     @list = List.new list_params
     if @list.save
       render :status => 200,
-       :json => { :success => true,
+        :json => { :success => true,
                   :info => "created",
                   :campaign => @list
-       } 
+        } 
     else
       render :status => 501,
-       :json => { :success => false,
+        :json => { :success => false,
                   :info => "create fail",
-       }
+        }
     end  
   end
 
@@ -20,15 +20,15 @@ class ListsController < ApplicationController
     @list = List.update params[:id], list_params
     if @list.save
       render :status => 200,
-       :json => { :success => true,
+        :json => { :success => true,
                   :info => "edited",
                   :campaign => @list
        } 
     else
       render :status => 501,
-       :json => { :success => false,
+        :json => { :success => false,
                   :info => "edit fail",
-       }
+        }
     end 
   end
 
@@ -47,7 +47,33 @@ class ListsController < ApplicationController
     end 
   end
 
-  def list_params
-    params.require(:list).permit(:name)
+  def getData
+    results = {}
+    @lists = List.all
+    @cards = Card.all
+    results = @lists.map do |l|
+      {
+        id: l.id,
+        name: l.name,
+        cards: 
+          @cards.where(:list_id => l.id).map do |c| 
+            {
+              id: c.id,
+              name: c.name,
+              content: c.content,
+              list_id: c.list_id
+            }
+          end
+      } 
+    end
+    render :status => 200,
+      :json => {
+        results: results
+      }
   end
+
+  private
+    def list_params
+      params.require(:list).permit(:name)
+    end
 end
