@@ -47,7 +47,7 @@ class ListsController < ApplicationController
     end 
   end
 
-  def getData
+  def index
     results = {}
     @lists = List.all
     @cards = Card.all
