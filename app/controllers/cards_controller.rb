@@ -47,6 +47,14 @@ class CardsController < ApplicationController
     end 
   end
 
+  def index
+    @cards = Card.all
+    render :status => 200,
+        :json => { 
+          :cards=> @cards
+        } 
+  end 
+
   private
     def card_params
       params.require(:card).permit(:name, :list_id)

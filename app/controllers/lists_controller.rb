@@ -47,7 +47,7 @@ class ListsController < ApplicationController
     end 
   end
 
-  def index
+  def getNestedData
     results = {}
     @lists = List.all
     @cards = Card.all
@@ -69,6 +69,14 @@ class ListsController < ApplicationController
       :json => {
         results: results
       }
+  end
+
+  def index
+    @lists = List.all
+    render :status => 200,
+        :json => { 
+          :lists=> @lists
+        } 
   end
 
   private
