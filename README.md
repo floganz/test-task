@@ -1,24 +1,9 @@
-# README
+Ruby 2.3.0
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails 5.0
 
-Things you may want to cover:
+bundle isntall
 
-* Ruby version
+set db user in .env
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+rails s
