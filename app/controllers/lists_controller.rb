@@ -6,7 +6,7 @@ class ListsController < ApplicationController
       render :status => 200,
         :json => { :success => true,
                   :info => "created",
-                  :campaign => @list
+                  :list => @list
         } 
     else
       render :status => 501,
@@ -22,7 +22,7 @@ class ListsController < ApplicationController
       render :status => 200,
         :json => { :success => true,
                   :info => "edited",
-                  :campaign => @list
+                  :list => @list
        } 
     else
       render :status => 501,
@@ -60,7 +60,6 @@ class ListsController < ApplicationController
             {
               id: c.id,
               name: c.name,
-              content: c.content,
               list_id: c.list_id
             }
           end

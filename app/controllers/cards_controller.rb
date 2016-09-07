@@ -6,7 +6,7 @@ class CardsController < ApplicationController
       render :status => 200,
         :json => { :success => true,
                   :info => "created",
-                  :campaign => @card
+                  :card => @card
         } 
     else
       render :status => 501,
@@ -22,7 +22,7 @@ class CardsController < ApplicationController
       render :status => 200,
         :json => { :success => true,
                   :info => "edited",
-                  :campaign => @card
+                  :card => @card
         } 
     else
         render :status => 501,
