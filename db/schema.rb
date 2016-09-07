@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906071330) do
+ActiveRecord::Schema.define(version: 20160907124456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
     t.string  "name"
-    t.string  "content"
     t.integer "list_id"
     t.index ["list_id"], name: "index_cards_on_list_id", using: :btree
   end
